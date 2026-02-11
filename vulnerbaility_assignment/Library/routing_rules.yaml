@@ -1,0 +1,1236 @@
+---
+# routing_rules.yaml
+# Generated: 2026-02-11
+# Version: 2026-02-11-001
+
+rule_version: "2026-02-11-001"
+generated_at: "2026-02-11T00:00:00Z"
+
+# Plugin ID rules: exact plugin.id -> owner_team
+# Populate from your sample data or Tenable plugin database for authoritative IDs.
+plugin_id_rules:
+  # Example placeholder entries (replace with real plugin IDs from your data)
+  - id: pid-000001
+    plugin_id: 100000
+    owner_team: Compute-OS
+    note: "Example: critical Windows SMB plugin_id — replace with real ID"
+
+  - id: pid-000002
+    plugin_id: 200000
+    owner_team: Middleware
+    note: "Example: high-impact Apache/httpd vulnerability — replace with real ID"
+
+# Family fallback rules: plugin.family -> owner_team
+family_rules:
+  - id: fam-001
+    family: "Windows : Microsoft Bulletins"
+    owner_team: Compute-OS
+    note: "OS and MS bulletins"
+
+  - id: fam-002
+    family: "Unix-based"
+    owner_team: Compute-OS
+    note: "Generic Unix/Linux kernel and distro packages"
+
+  - id: fam-003
+    family: "Web Servers"
+    owner_team: Middleware
+    note: "Apache, Nginx, IIS, Tomcat, etc."
+
+  - id: fam-004
+    family: "Databases"
+    owner_team: Database
+    note: "MySQL, PostgreSQL, MSSQL, Oracle"
+
+  - id: fam-005
+    family: "Network Devices"
+    owner_team: Network
+    note: "Cisco, Juniper, F5, load-balancers, switches"
+
+  - id: fam-006
+    family: "Middleware"
+    owner_team: Middleware
+    note: "Java app servers, messaging, cache"
+
+  - id: fam-007
+    family: "Cloud Services"
+    owner_team: Compute-nonOS
+    note: "Cloud vendor service findings (AWS, Azure, GCP)"
+
+  - id: fam-008
+    family: "Containers"
+    owner_team: Compute-nonOS
+    note: "Docker, Kubernetes-implied findings"
+
+  - id: fam-009
+    family: "Authentication"
+    owner_team: SecOps
+    note: "LDAP, Active Directory, SSO related"
+
+  - id: fam-010
+    family: "Default or Generic"
+    owner_team: SecOps
+    note: "Fallback family mapping"
+
+# Keyword rules: token -> owner_team + weight + applicable fields
+# Weight convention: 100 (strong), 70 (medium), 40 (weak)
+# Applicable fields: plugin_name, family, description, solution, evidence.output
+keyword_rules:
+  - id: kw-001
+    keyword: "IIS"
+    owner_team: Middleware
+    weight: 100
+    fields: ["plugin_name","family","description"]
+    note: "Microsoft IIS web server issues"
+
+  - id: kw-002
+    keyword: "Apache"
+    owner_team: Middleware
+    weight: 100
+    fields: ["plugin_name","family"]
+
+  - id: kw-003
+    keyword: "nginx"
+    owner_team: Middleware
+    weight: 100
+    fields: ["plugin_name","family"]
+
+  - id: kw-004
+    keyword: "Tomcat"
+    owner_team: Middleware
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-005
+    keyword: "weblogic"
+    owner_team: Middleware
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-006
+    keyword: "OpenSSL"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-007
+    keyword: "Heartbleed"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-008
+    keyword: "SMB"
+    owner_team: Compute-OS
+    weight: 90
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-009
+    keyword: "RDP"
+    owner_team: Compute-OS
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-010
+    keyword: "SSH"
+    owner_team: Compute-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-011
+    keyword: "SQL Injection"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-012
+    keyword: "Cross-Site Scripting"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-013
+    keyword: "XSS"
+    owner_team: SecOps
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-014
+    keyword: "WordPress"
+    owner_team: Middleware
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-015
+    keyword: "Drupal"
+    owner_team: Middleware
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-016
+    keyword: "MySQL"
+    owner_team: Database
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-017
+    keyword: "PostgreSQL"
+    owner_team: Database
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-018
+    keyword: "MSSQL"
+    owner_team: Database
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-019
+    keyword: "Oracle"
+    owner_team: Database
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-020
+    keyword: "default password"
+    owner_team: SecOps
+    weight: 100
+    fields: ["description","evidence.output"]
+
+  - id: kw-021
+    keyword: "hardcoded password"
+    owner_team: SecOps
+    weight: 100
+    fields: ["description","evidence.output"]
+
+  - id: kw-022
+    keyword: "weak cipher"
+    owner_team: SecOps
+    weight: 90
+    fields: ["description"]
+
+  - id: kw-023
+    keyword: "TLS"
+    owner_team: SecOps
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-024
+    keyword: "Expired certificate"
+    owner_team: SecOps
+    weight: 100
+    fields: ["description"]
+
+  - id: kw-025
+    keyword: "buffer overflow"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-026
+    keyword: "denial of service"
+    owner_team: Compute-nonOS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-027
+    keyword: "unauthenticated"
+    owner_team: SecOps
+    weight: 85
+    fields: ["description"]
+
+  - id: kw-028
+    keyword: "authentication bypass"
+    owner_team: SecOps
+    weight: 100
+    fields: ["description"]
+
+  - id: kw-029
+    keyword: "kubernetes"
+    owner_team: Compute-nonOS
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-030
+    keyword: "docker"
+    owner_team: Compute-nonOS
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-031
+    keyword: "AWS"
+    owner_team: Compute-nonOS
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-032
+    keyword: "Azure"
+    owner_team: Compute-nonOS
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-033
+    keyword: "GCP"
+    owner_team: Compute-nonOS
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-034
+    keyword: "Cisco"
+    owner_team: Network
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-035
+    keyword: "Juniper"
+    owner_team: Network
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-036
+    keyword: "F5"
+    owner_team: Network
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-037
+    keyword: "Exchange"
+    owner_team: Middleware
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-038
+    keyword: "SMTP"
+    owner_team: Middleware
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-039
+    keyword: "LDAP"
+    owner_team: SecOps
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-040
+    keyword: "Active Directory"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-041
+    keyword: "certificate"
+    owner_team: SecOps
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-042
+    keyword: "privilege escalation"
+    owner_team: SecOps
+    weight: 100
+    fields: ["description"]
+
+  - id: kw-043
+    keyword: "credential"
+    owner_team: SecOps
+    weight: 90
+    fields: ["description","evidence.output"]
+
+  - id: kw-044
+    keyword: "default-credentials"
+    owner_team: SecOps
+    weight: 100
+    fields: ["description","evidence.output"]
+
+  - id: kw-045
+    keyword: "smb signing"
+    owner_team: Compute-OS
+    weight: 80
+    fields: ["description"]
+
+  - id: kw-046
+    keyword: "weak-crypto"
+    owner_team: SecOps
+    weight: 90
+    fields: ["description"]
+
+  - id: kw-047
+    keyword: "heap overflow"
+    owner_team: SecOps
+    weight: 100
+    fields: ["description"]
+
+  - id: kw-048
+    keyword: "format string"
+    owner_team: SecOps
+    weight: 95
+    fields: ["description"]
+
+  - id: kw-049
+    keyword: "backdoor"
+    owner_team: SecOps
+    weight: 100
+    fields: ["description","evidence.output"]
+
+  - id: kw-050
+    keyword: "malware"
+    owner_team: SecOps
+    weight: 100
+    fields: ["description","evidence.output"]
+
+  - id: kw-051
+    keyword: "prometheus"
+    owner_team: Observability
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-052
+    keyword: "grafana"
+    owner_team: Observability
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-053
+    keyword: "monitoring"
+    owner_team: Observability
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-054
+    keyword: "storage"
+    owner_team: Storage
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-055
+    keyword: "nfs"
+    owner_team: Storage
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-056
+    keyword: "iscsi"
+    owner_team: Storage
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-057
+    keyword: "struts"
+    owner_team: Middleware
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-058
+    keyword: "spring"
+    owner_team: Middleware
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-059
+    keyword: "jboss"
+    owner_team: Middleware
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-060
+    keyword: "glassfish"
+    owner_team: Middleware
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-061
+    keyword: "nodejs"
+    owner_team: Middleware
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-062
+    keyword: "openjdk"
+    owner_team: Compute-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-063
+    keyword: "freerdp"
+    owner_team: Compute-OS
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-064
+    keyword: "samba"
+    owner_team: Compute-OS
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-065
+    keyword: "smbv1"
+    owner_team: Compute-OS
+    weight: 100
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-066
+    keyword: "cifs"
+    owner_team: Compute-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-067
+    keyword: "elastic"
+    owner_team: Database
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-068
+    keyword: "elasticsearch"
+    owner_team: Database
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-069
+    keyword: "kibana"
+    owner_team: Observability
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-070
+    keyword: "mongodb"
+    owner_team: Database
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-071
+    keyword: "redis"
+    owner_team: Database
+    weight: 85
+    fields: ["plugin_name","description"]
+
+  - id: kw-072
+    keyword: "memcached"
+    owner_team: Database
+    weight: 85
+    fields: ["plugin_name","description"]
+
+  - id: kw-073
+    keyword: "cassandra"
+    owner_team: Database
+    weight: 85
+    fields: ["plugin_name","description"]
+
+  - id: kw-074
+    keyword: "couchdb"
+    owner_team: Database
+    weight: 85
+    fields: ["plugin_name","description"]
+
+  - id: kw-075
+    keyword: "rabbitmq"
+    owner_team: Middleware
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-076
+    keyword: "activemq"
+    owner_team: Middleware
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-077
+    keyword: "palo alto"
+    owner_team: Network
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-078
+    keyword: "fortinet"
+    owner_team: Network
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-079
+    keyword: "checkpoint"
+    owner_team: Network
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-080
+    keyword: "aruba"
+    owner_team: Network
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-081
+    keyword: "snmp"
+    owner_team: Network
+    weight: 90
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-082
+    keyword: "dns"
+    owner_team: Network
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-083
+    keyword: "zone transfer"
+    owner_team: Network
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-084
+    keyword: "ospf"
+    owner_team: Network
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-085
+    keyword: "bgp"
+    owner_team: Network
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-086
+    keyword: "vpn"
+    owner_team: Network
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-087
+    keyword: "ipsec"
+    owner_team: Network
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-088
+    keyword: "netapp"
+    owner_team: Storage
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-089
+    keyword: "isilon"
+    owner_team: Storage
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-090
+    keyword: "emc"
+    owner_team: Storage
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-091
+    keyword: "pure storage"
+    owner_team: Storage
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-092
+    keyword: "nagios"
+    owner_team: Observability
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-093
+    keyword: "zabbix"
+    owner_team: Observability
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-094
+    keyword: "splunk"
+    owner_team: Observability
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-095
+    keyword: "logstash"
+    owner_team: Observability
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-096
+    keyword: "filebeat"
+    owner_team: Observability
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-097
+    keyword: "fluentd"
+    owner_team: Observability
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-098
+    keyword: "telegraf"
+    owner_team: Observability
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-099
+    keyword: "s3 bucket"
+    owner_team: Compute-nonOS
+    weight: 100
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-100
+    keyword: "iam"
+    owner_team: Compute-nonOS
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-101
+    keyword: "lambda"
+    owner_team: Compute-nonOS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-102
+    keyword: "csrf"
+    owner_team: SecOps
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-103
+    keyword: "directory traversal"
+    owner_team: SecOps
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-104
+    keyword: "path traversal"
+    owner_team: SecOps
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-105
+    keyword: "information disclosure"
+    owner_team: SecOps
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-106
+    keyword: "plaintext"
+    owner_team: SecOps
+    weight: 85
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-107
+    keyword: "cleartext"
+    owner_team: SecOps
+    weight: 85
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-108
+    keyword: "RHEL"
+    owner_team: Computer-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-109
+    keyword: "Red Hat"
+    owner_team: Computer-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-110
+    keyword: "CentOS"
+    owner_team: Computer-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-111
+    keyword: "Fedora"
+    owner_team: Computer-OS
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-112
+    keyword: "Debian"
+    owner_team: Computer-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-113
+    keyword: "Ubuntu"
+    owner_team: Computer-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-114
+    keyword: "SUSE"
+    owner_team: Computer-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-115
+    keyword: "openSUSE"
+    owner_team: Computer-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-116
+    keyword: "Oracle Linux"
+    owner_team: Computer-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-117
+    keyword: "Alma Linux"
+    owner_team: Computer-OS
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-118
+    keyword: "Amazon Linux"
+    owner_team: Computer-OS
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-119
+    keyword: "Rocky Linux"
+    owner_team: Computer-OS
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-120
+    keyword: "FreeBSD"
+    owner_team: Computer-OS
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-121
+    keyword: "Solaris"
+    owner_team: Computer-OS
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-122
+    keyword: "AIX"
+    owner_team: Computer-OS
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-123
+    keyword: "VMware ESX"
+    owner_team: Compute-nonOS
+    weight: 85
+    fields: ["plugin_name","description"]
+
+  - id: kw-124
+    keyword: "SCADA"
+    owner_team: SecOps
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-125
+    keyword: "Siemens"
+    owner_team: SecOps
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-126
+    keyword: "S7"
+    owner_team: SecOps
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-127
+    keyword: "PLC"
+    owner_team: SecOps
+    weight: 85
+    fields: ["plugin_name","description"]
+
+  - id: kw-128
+    keyword: "FTP"
+    owner_team: Network
+    weight: 80
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-129
+    keyword: "telnet"
+    owner_team: Network
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-130
+    keyword: "NTP"
+    owner_team: Network
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-131
+    keyword: "phpmyadmin"
+    owner_team: Middleware
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-132
+    keyword: "joomla"
+    owner_team: Middleware
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-133
+    keyword: "openssh"
+    owner_team: Computer-OS
+    weight: 90
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-134
+    keyword: "OpenVPN"
+    owner_team: Network
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-135
+    keyword: "etcd"
+    owner_team: Compute-nonOS
+    weight: 85
+    fields: ["plugin_name","description"]
+
+  - id: kw-136
+    keyword: "kubelet"
+    owner_team: Compute-nonOS
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-137
+    keyword: "istio"
+    owner_team: Compute-nonOS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-138
+    keyword: "helm"
+    owner_team: Compute-nonOS
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-139
+    keyword: "haproxy"
+    owner_team: Middleware
+    weight: 85
+    fields: ["plugin_name","description"]
+
+  - id: kw-140
+    keyword: "varnish"
+    owner_team: Middleware
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-141
+    keyword: "Backdoors"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-142
+    keyword: "Brute force"
+    owner_team: SecOps
+    weight: 95
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-143
+    keyword: "CGI"
+    owner_team: Middleware
+    weight: 85
+    fields: ["plugin_name","description"]
+
+  - id: kw-144
+    keyword: "CGI abuses"
+    owner_team: Middleware
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-145
+    keyword: "DNS"
+    owner_team: Network
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-146
+    keyword: "Firewalls"
+    owner_team: Network
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-147
+    keyword: "Mobile"
+    owner_team: Compute-nonOS
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-148
+    keyword: "Policy Compliance"
+    owner_team: SecOps
+    weight: 60
+    fields: ["plugin_name","description"]
+
+  - id: kw-149
+    keyword: "Port scanner"
+    owner_team: Network
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-150
+    keyword: "RPC"
+    owner_team: Network
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-151
+    keyword: "SNMPv1"
+    owner_team: Network
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-152
+    keyword: "SNMPv2"
+    owner_team: Network
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-153
+    keyword: "SNMPv3"
+    owner_team: Network
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-154
+    keyword: "FTP problems"
+    owner_team: Network
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-155
+    keyword: "Local Security Checks"
+    owner_team: Computer-OS
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-156
+    keyword: "Misc."
+    owner_team: SecOps
+    weight: 40
+    fields: ["plugin_name","description"]
+
+  - id: kw-157
+    keyword: "Windows"
+    owner_team: Computer-OS
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-158
+    keyword: "Web Servers"
+    owner_team: Middleware
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-159
+    keyword: "SMTP problems"
+    owner_team: Middleware
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-160
+    keyword: "Default Unix Accounts"
+    owner_team: SecOps
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-161
+    keyword: "Brute force attacks"
+    owner_team: SecOps
+    weight: 95
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-162
+    keyword: "Gain a shell remotely"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description","evidence.output"]
+
+  - id: kw-163
+    keyword: "CISCO"
+    owner_team: Network
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-164
+    keyword: "F5 Networks"
+    owner_team: Network
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-165
+    keyword: "Huawei"
+    owner_team: Network
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-166
+    keyword: "dotnet"
+    owner_team: Middleware
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-167
+    keyword: "asp.net"
+    owner_team: Middleware
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-168
+    keyword: ".NET Core"
+    owner_team: Middleware
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-169
+    keyword: "python"
+    owner_team: Middleware
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-170
+    keyword: "pip"
+    owner_team: Middleware
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-171
+    keyword: "ruby"
+    owner_team: Middleware
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-172
+    keyword: "rails"
+    owner_team: Middleware
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-173
+    keyword: "php"
+    owner_team: Middleware
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-174
+    keyword: "composer"
+    owner_team: Middleware
+    weight: 75
+    fields: ["plugin_name","description"]
+
+  - id: kw-175
+    keyword: "perl"
+    owner_team: Middleware
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-176
+    keyword: "golang"
+    owner_team: Middleware
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-177
+    keyword: "npm"
+    owner_team: Middleware
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-178
+    keyword: "yarn"
+    owner_team: Middleware
+    weight: 70
+    fields: ["plugin_name","description"]
+
+  - id: kw-179
+    keyword: "cpanel"
+    owner_team: Middleware
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-180
+    keyword: "plesk"
+    owner_team: Middleware
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-181
+    keyword: "webmin"
+    owner_team: Middleware
+    weight: 90
+    fields: ["plugin_name","description"]
+
+  - id: kw-182
+    keyword: "insecure deserialization"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-183
+    keyword: "XXE"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-184
+    keyword: "XML External Entity"
+    owner_team: SecOps
+    weight: 100
+    fields: ["plugin_name","description"]
+
+  - id: kw-185
+    keyword: "deserialization"
+    owner_team: SecOps
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-186
+    keyword: "phpmyadmin"
+    owner_team: Middleware
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-187
+    keyword: "cpanel"
+    owner_team: Middleware
+    weight: 95
+    fields: ["plugin_name","description"]
+
+  - id: kw-188
+    keyword: "web application"
+    owner_team: Middleware
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-189
+    keyword: "application server"
+    owner_team: Middleware
+    weight: 80
+    fields: ["plugin_name","description"]
+
+  - id: kw-190
+    keyword: "sql"
+    owner_team: SecOps
+    weight: 80
+    fields: ["plugin_name","description","evidence.output"]
+
+# Precedence order used by the engine when resolving ties
+precedence:
+  - database
+  - middleware
+  - OS
+  - network
+  - security
+  - default
+
+# Default owner if no rules match
+default_owner_team: vm-triage
+
+# Metadata and governance notes
+notes:
+  - "This YAML emphasizes family and keyword-driven routing to maximize coverage without needing exhaustive plugin_id lists."
+  - "Populate `plugin_id_rules` from your Tenable data export for authoritative exact matches."
+  - "Weights are numeric: higher means stronger signal when scoring combinations of keyword rules."

@@ -1,0 +1,802 @@
+[
+  {
+    "asset": {
+      "uuid": "asset-0001",
+      "hostname": "host1",
+      "fqdn": "host1.example.com",
+      "ipv4": "192.0.2.1",
+      "ipv6": null,
+      "device_type": "database-server",
+      "operating_system": [
+        "Microsoft Windows Server 2019"
+      ]
+    },
+    "plugin": {
+      "id": 10001,
+      "name": "Plugin Security Check 1",
+      "family": "Windows : Microsoft Bulletins",
+      "description": "Description for plugin 1.",
+      "solution": "Solution steps for plugin 1.",
+      "cve": [
+        "CVE-2024-1001"
+      ],
+      "ms_bulletin": [
+        "5000001"
+      ],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 1433,
+      "protocol": "TCP",
+      "service": "mssql"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-02T08:00:00Z",
+    "last_found": "2026-01-03T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 1.",
+    "finding_id": "finding-0001"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0002",
+      "hostname": "host2",
+      "fqdn": "host2.example.com",
+      "ipv4": "192.0.2.2",
+      "ipv6": null,
+      "device_type": "general-purpose",
+      "operating_system": [
+        "Ubuntu 22.04 LTS"
+      ]
+    },
+    "plugin": {
+      "id": 10002,
+      "name": "Plugin Security Check 2",
+      "family": "Linux : Security Updates",
+      "description": "Description for plugin 2.",
+      "solution": "Solution steps for plugin 2.",
+      "cve": [
+        "CVE-2024-1002"
+      ],
+      "ms_bulletin": [],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 22,
+      "protocol": "TCP",
+      "service": "ssh"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-03T08:00:00Z",
+    "last_found": "2026-01-04T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 2.",
+    "finding_id": "finding-0002"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0003",
+      "hostname": "host3",
+      "fqdn": "host3.example.com",
+      "ipv4": "192.0.2.3",
+      "ipv6": null,
+      "device_type": "database-server",
+      "operating_system": [
+        "Microsoft Windows Server 2019"
+      ]
+    },
+    "plugin": {
+      "id": 10003,
+      "name": "Plugin Security Check 3",
+      "family": "Windows : Microsoft Bulletins",
+      "description": "Description for plugin 3.",
+      "solution": "Solution steps for plugin 3.",
+      "cve": [
+        "CVE-2024-1003"
+      ],
+      "ms_bulletin": [
+        "5000003"
+      ],
+      "type": "local",
+      "risk_factor": "high",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 1433,
+      "protocol": "TCP",
+      "service": "mssql"
+    },
+    "severity": "high",
+    "severity_id": 3,
+    "first_found": "2026-01-04T08:00:00Z",
+    "last_found": "2026-01-05T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 3.",
+    "finding_id": "finding-0003"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0004",
+      "hostname": "host4",
+      "fqdn": "host4.example.com",
+      "ipv4": "192.0.2.4",
+      "ipv6": null,
+      "device_type": "general-purpose",
+      "operating_system": [
+        "Ubuntu 22.04 LTS"
+      ]
+    },
+    "plugin": {
+      "id": 10004,
+      "name": "Plugin Security Check 4",
+      "family": "Linux : Security Updates",
+      "description": "Description for plugin 4.",
+      "solution": "Solution steps for plugin 4.",
+      "cve": [
+        "CVE-2024-1004"
+      ],
+      "ms_bulletin": [],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": true
+    },
+    "port": {
+      "port": 22,
+      "protocol": "TCP",
+      "service": "ssh"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-05T08:00:00Z",
+    "last_found": "2026-01-06T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 4.",
+    "finding_id": "finding-0004"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0005",
+      "hostname": "host5",
+      "fqdn": "host5.example.com",
+      "ipv4": "192.0.2.5",
+      "ipv6": null,
+      "device_type": "database-server",
+      "operating_system": [
+        "Microsoft Windows Server 2019"
+      ]
+    },
+    "plugin": {
+      "id": 10005,
+      "name": "Plugin Security Check 5",
+      "family": "Windows : Microsoft Bulletins",
+      "description": "Description for plugin 5.",
+      "solution": "Solution steps for plugin 5.",
+      "cve": [
+        "CVE-2024-1005"
+      ],
+      "ms_bulletin": [
+        "5000005"
+      ],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 1433,
+      "protocol": "TCP",
+      "service": "mssql"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-06T08:00:00Z",
+    "last_found": "2026-01-07T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 5.",
+    "finding_id": "finding-0005"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0006",
+      "hostname": "host6",
+      "fqdn": "host6.example.com",
+      "ipv4": "192.0.2.6",
+      "ipv6": null,
+      "device_type": "general-purpose",
+      "operating_system": [
+        "Ubuntu 22.04 LTS"
+      ]
+    },
+    "plugin": {
+      "id": 10006,
+      "name": "Plugin Security Check 6",
+      "family": "Linux : Security Updates",
+      "description": "Description for plugin 6.",
+      "solution": "Solution steps for plugin 6.",
+      "cve": [
+        "CVE-2024-1006"
+      ],
+      "ms_bulletin": [],
+      "type": "local",
+      "risk_factor": "high",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 22,
+      "protocol": "TCP",
+      "service": "ssh"
+    },
+    "severity": "high",
+    "severity_id": 3,
+    "first_found": "2026-01-07T08:00:00Z",
+    "last_found": "2026-01-08T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 6.",
+    "finding_id": "finding-0006"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0007",
+      "hostname": "host7",
+      "fqdn": "host7.example.com",
+      "ipv4": "192.0.2.7",
+      "ipv6": null,
+      "device_type": "database-server",
+      "operating_system": [
+        "Microsoft Windows Server 2019"
+      ]
+    },
+    "plugin": {
+      "id": 10007,
+      "name": "Plugin Security Check 7",
+      "family": "Windows : Microsoft Bulletins",
+      "description": "Description for plugin 7.",
+      "solution": "Solution steps for plugin 7.",
+      "cve": [
+        "CVE-2024-1007"
+      ],
+      "ms_bulletin": [
+        "5000007"
+      ],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 1433,
+      "protocol": "TCP",
+      "service": "mssql"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-08T08:00:00Z",
+    "last_found": "2026-01-09T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 7.",
+    "finding_id": "finding-0007"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0008",
+      "hostname": "host8",
+      "fqdn": "host8.example.com",
+      "ipv4": "192.0.2.8",
+      "ipv6": null,
+      "device_type": "general-purpose",
+      "operating_system": [
+        "Ubuntu 22.04 LTS"
+      ]
+    },
+    "plugin": {
+      "id": 10008,
+      "name": "Plugin Security Check 8",
+      "family": "Linux : Security Updates",
+      "description": "Description for plugin 8.",
+      "solution": "Solution steps for plugin 8.",
+      "cve": [
+        "CVE-2024-1008"
+      ],
+      "ms_bulletin": [],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": true
+    },
+    "port": {
+      "port": 22,
+      "protocol": "TCP",
+      "service": "ssh"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-09T08:00:00Z",
+    "last_found": "2026-01-10T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 8.",
+    "finding_id": "finding-0008"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0009",
+      "hostname": "host9",
+      "fqdn": "host9.example.com",
+      "ipv4": "192.0.2.9",
+      "ipv6": null,
+      "device_type": "database-server",
+      "operating_system": [
+        "Microsoft Windows Server 2019"
+      ]
+    },
+    "plugin": {
+      "id": 10009,
+      "name": "Plugin Security Check 9",
+      "family": "Windows : Microsoft Bulletins",
+      "description": "Description for plugin 9.",
+      "solution": "Solution steps for plugin 9.",
+      "cve": [
+        "CVE-2024-1009"
+      ],
+      "ms_bulletin": [
+        "5000009"
+      ],
+      "type": "local",
+      "risk_factor": "high",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 1433,
+      "protocol": "TCP",
+      "service": "mssql"
+    },
+    "severity": "high",
+    "severity_id": 3,
+    "first_found": "2026-01-10T08:00:00Z",
+    "last_found": "2026-01-11T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 9.",
+    "finding_id": "finding-0009"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0010",
+      "hostname": "host10",
+      "fqdn": "host10.example.com",
+      "ipv4": "192.0.2.10",
+      "ipv6": null,
+      "device_type": "general-purpose",
+      "operating_system": [
+        "Ubuntu 22.04 LTS"
+      ]
+    },
+    "plugin": {
+      "id": 10010,
+      "name": "Plugin Security Check 10",
+      "family": "Linux : Security Updates",
+      "description": "Description for plugin 10.",
+      "solution": "Solution steps for plugin 10.",
+      "cve": [
+        "CVE-2024-1010"
+      ],
+      "ms_bulletin": [],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 22,
+      "protocol": "TCP",
+      "service": "ssh"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-11T08:00:00Z",
+    "last_found": "2026-01-12T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 10.",
+    "finding_id": "finding-0010"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0011",
+      "hostname": "host11",
+      "fqdn": "host11.example.com",
+      "ipv4": "192.0.2.11",
+      "ipv6": null,
+      "device_type": "database-server",
+      "operating_system": [
+        "Microsoft Windows Server 2019"
+      ]
+    },
+    "plugin": {
+      "id": 10011,
+      "name": "Plugin Security Check 11",
+      "family": "Windows : Microsoft Bulletins",
+      "description": "Description for plugin 11.",
+      "solution": "Solution steps for plugin 11.",
+      "cve": [
+        "CVE-2024-1011"
+      ],
+      "ms_bulletin": [
+        "5000011"
+      ],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 1433,
+      "protocol": "TCP",
+      "service": "mssql"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-12T08:00:00Z",
+    "last_found": "2026-01-13T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 11.",
+    "finding_id": "finding-0011"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0012",
+      "hostname": "host12",
+      "fqdn": "host12.example.com",
+      "ipv4": "192.0.2.12",
+      "ipv6": null,
+      "device_type": "general-purpose",
+      "operating_system": [
+        "Ubuntu 22.04 LTS"
+      ]
+    },
+    "plugin": {
+      "id": 10012,
+      "name": "Plugin Security Check 12",
+      "family": "Linux : Security Updates",
+      "description": "Description for plugin 12.",
+      "solution": "Solution steps for plugin 12.",
+      "cve": [
+        "CVE-2024-1012"
+      ],
+      "ms_bulletin": [],
+      "type": "local",
+      "risk_factor": "high",
+      "exploit_available": true
+    },
+    "port": {
+      "port": 22,
+      "protocol": "TCP",
+      "service": "ssh"
+    },
+    "severity": "high",
+    "severity_id": 3,
+    "first_found": "2026-01-13T08:00:00Z",
+    "last_found": "2026-01-14T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 12.",
+    "finding_id": "finding-0012"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0013",
+      "hostname": "host13",
+      "fqdn": "host13.example.com",
+      "ipv4": "192.0.2.13",
+      "ipv6": null,
+      "device_type": "database-server",
+      "operating_system": [
+        "Microsoft Windows Server 2019"
+      ]
+    },
+    "plugin": {
+      "id": 10013,
+      "name": "Plugin Security Check 13",
+      "family": "Windows : Microsoft Bulletins",
+      "description": "Description for plugin 13.",
+      "solution": "Solution steps for plugin 13.",
+      "cve": [
+        "CVE-2024-1013"
+      ],
+      "ms_bulletin": [
+        "5000013"
+      ],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 1433,
+      "protocol": "TCP",
+      "service": "mssql"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-14T08:00:00Z",
+    "last_found": "2026-01-15T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 13.",
+    "finding_id": "finding-0013"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0014",
+      "hostname": "host14",
+      "fqdn": "host14.example.com",
+      "ipv4": "192.0.2.14",
+      "ipv6": null,
+      "device_type": "general-purpose",
+      "operating_system": [
+        "Ubuntu 22.04 LTS"
+      ]
+    },
+    "plugin": {
+      "id": 10014,
+      "name": "Plugin Security Check 14",
+      "family": "Linux : Security Updates",
+      "description": "Description for plugin 14.",
+      "solution": "Solution steps for plugin 14.",
+      "cve": [
+        "CVE-2024-1014"
+      ],
+      "ms_bulletin": [],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 22,
+      "protocol": "TCP",
+      "service": "ssh"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-15T08:00:00Z",
+    "last_found": "2026-01-16T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 14.",
+    "finding_id": "finding-0014"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0015",
+      "hostname": "host15",
+      "fqdn": "host15.example.com",
+      "ipv4": "192.0.2.15",
+      "ipv6": null,
+      "device_type": "database-server",
+      "operating_system": [
+        "Microsoft Windows Server 2019"
+      ]
+    },
+    "plugin": {
+      "id": 10015,
+      "name": "Plugin Security Check 15",
+      "family": "Windows : Microsoft Bulletins",
+      "description": "Description for plugin 15.",
+      "solution": "Solution steps for plugin 15.",
+      "cve": [
+        "CVE-2024-1015"
+      ],
+      "ms_bulletin": [
+        "5000015"
+      ],
+      "type": "local",
+      "risk_factor": "high",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 1433,
+      "protocol": "TCP",
+      "service": "mssql"
+    },
+    "severity": "high",
+    "severity_id": 3,
+    "first_found": "2026-01-16T08:00:00Z",
+    "last_found": "2026-01-17T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 15.",
+    "finding_id": "finding-0015"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0016",
+      "hostname": "host16",
+      "fqdn": "host16.example.com",
+      "ipv4": "192.0.2.16",
+      "ipv6": null,
+      "device_type": "general-purpose",
+      "operating_system": [
+        "Ubuntu 22.04 LTS"
+      ]
+    },
+    "plugin": {
+      "id": 10016,
+      "name": "Plugin Security Check 16",
+      "family": "Linux : Security Updates",
+      "description": "Description for plugin 16.",
+      "solution": "Solution steps for plugin 16.",
+      "cve": [
+        "CVE-2024-1016"
+      ],
+      "ms_bulletin": [],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": true
+    },
+    "port": {
+      "port": 22,
+      "protocol": "TCP",
+      "service": "ssh"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-17T08:00:00Z",
+    "last_found": "2026-01-18T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 16.",
+    "finding_id": "finding-0016"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0017",
+      "hostname": "host17",
+      "fqdn": "host17.example.com",
+      "ipv4": "192.0.2.17",
+      "ipv6": null,
+      "device_type": "database-server",
+      "operating_system": [
+        "Microsoft Windows Server 2019"
+      ]
+    },
+    "plugin": {
+      "id": 10017,
+      "name": "Plugin Security Check 17",
+      "family": "Windows : Microsoft Bulletins",
+      "description": "Description for plugin 17.",
+      "solution": "Solution steps for plugin 17.",
+      "cve": [
+        "CVE-2024-1017"
+      ],
+      "ms_bulletin": [
+        "5000017"
+      ],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 1433,
+      "protocol": "TCP",
+      "service": "mssql"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-18T08:00:00Z",
+    "last_found": "2026-01-19T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 17.",
+    "finding_id": "finding-0017"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0018",
+      "hostname": "host18",
+      "fqdn": "host18.example.com",
+      "ipv4": "192.0.2.18",
+      "ipv6": null,
+      "device_type": "general-purpose",
+      "operating_system": [
+        "Ubuntu 22.04 LTS"
+      ]
+    },
+    "plugin": {
+      "id": 10018,
+      "name": "Plugin Security Check 18",
+      "family": "Linux : Security Updates",
+      "description": "Description for plugin 18.",
+      "solution": "Solution steps for plugin 18.",
+      "cve": [
+        "CVE-2024-1018"
+      ],
+      "ms_bulletin": [],
+      "type": "local",
+      "risk_factor": "high",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 22,
+      "protocol": "TCP",
+      "service": "ssh"
+    },
+    "severity": "high",
+    "severity_id": 3,
+    "first_found": "2026-01-19T08:00:00Z",
+    "last_found": "2026-01-20T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 18.",
+    "finding_id": "finding-0018"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0019",
+      "hostname": "host19",
+      "fqdn": "host19.example.com",
+      "ipv4": "192.0.2.19",
+      "ipv6": null,
+      "device_type": "database-server",
+      "operating_system": [
+        "Microsoft Windows Server 2019"
+      ]
+    },
+    "plugin": {
+      "id": 10019,
+      "name": "Plugin Security Check 19",
+      "family": "Windows : Microsoft Bulletins",
+      "description": "Description for plugin 19.",
+      "solution": "Solution steps for plugin 19.",
+      "cve": [
+        "CVE-2024-1019"
+      ],
+      "ms_bulletin": [
+        "5000019"
+      ],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": false
+    },
+    "port": {
+      "port": 1433,
+      "protocol": "TCP",
+      "service": "mssql"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-20T08:00:00Z",
+    "last_found": "2026-01-21T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 19.",
+    "finding_id": "finding-0019"
+  },
+  {
+    "asset": {
+      "uuid": "asset-0020",
+      "hostname": "host20",
+      "fqdn": "host20.example.com",
+      "ipv4": "192.0.2.20",
+      "ipv6": null,
+      "device_type": "general-purpose",
+      "operating_system": [
+        "Ubuntu 22.04 LTS"
+      ]
+    },
+    "plugin": {
+      "id": 10020,
+      "name": "Plugin Security Check 20",
+      "family": "Linux : Security Updates",
+      "description": "Description for plugin 20.",
+      "solution": "Solution steps for plugin 20.",
+      "cve": [
+        "CVE-2024-1020"
+      ],
+      "ms_bulletin": [],
+      "type": "local",
+      "risk_factor": "medium",
+      "exploit_available": true
+    },
+    "port": {
+      "port": 22,
+      "protocol": "TCP",
+      "service": "ssh"
+    },
+    "severity": "medium",
+    "severity_id": 2,
+    "first_found": "2026-01-21T08:00:00Z",
+    "last_found": "2026-01-22T08:00:00Z",
+    "state": "OPEN",
+    "output": "Output details for finding 20.",
+    "finding_id": "finding-0020"
+  }
+]
