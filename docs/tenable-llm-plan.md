@@ -178,3 +178,62 @@ To move from design to implementation quickly, share:
 - your asset-to-owner mapping format,
 - your SLA policy (or confirm the default table above),
 - target output channel (Jira, ServiceNow, CSV, markdown, API).
+
+## 11) What to build first (answer to your question)
+Start with a **routing library**, then add a lightweight algorithm on top.
+
+Why this order:
+- You can reliably export data from Tenable now.
+- `plugin.id` is usually the most stable key over time.
+- Deterministic team routing is the highest immediate value (ticket ownership and accountability).
+
+### 11.1 Phase 1: routing library (required)
+Create a versioned mapping table like:
+- `plugin_id -> owner_team`
+- optional overrides: `plugin_id + asset_tag -> owner_team`
+- fallback: `plugin_family -> owner_team`
+
+Recommended fields in the routing table:
+- `plugin_id` (primary key for mapping)
+- `plugin_name_snapshot` (for human readability only)
+- `family`
+- `owner_team`
+- `default_priority`
+- `notes`
+- `rule_version`
+
+### 11.2 Phase 2: routing algorithm (small, deterministic)
+Apply routing in this order:
+1. Exact `plugin_id` + asset override match
+2. Exact `plugin_id` match
+3. `plugin.family` match
+4. default `vm-triage` queue
+
+Then append confidence labels:
+- `HIGH`: exact plugin_id rule
+- `MEDIUM`: family-based rule
+- `LOW`: default queue fallback
+
+### 11.3 Why not start with plugin name/description/output?
+- `plugin.name` can change between plugin versions.
+- `description` and `output` are useful as evidence, but noisy for ownership logic.
+- `plugin.id` is best for deterministic mapping; use name/family as human context and fallback only.
+
+### 11.4 Minimal starter artifact
+A simple CSV or YAML is enough to begin:
+```yaml
+rules:
+  - plugin_id: 156641
+    owner_team: collaboration-platform
+    default_priority: P2
+  - plugin_id: 50344
+    owner_team: web-platform
+    default_priority: P4
+family_fallbacks:
+  - family: "Windows : Microsoft Bulletins"
+    owner_team: windows-server
+  - family: "CGI abuses"
+    owner_team: appsec
+default_owner_team: vm-triage
+rule_version: "2026-02-11"
+```
