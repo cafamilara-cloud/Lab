@@ -1,3 +1,4 @@
+# LLM-Like Implementation Guide for Vulnerability Ownership (Tenable Export)
 LLM-Like Implementation Guide for Vulnerability Ownership (Tenable Export)
 
 This guide describes a deterministic, explainable ownership engine for Tenable vulnerability data.
@@ -6,6 +7,61 @@ The system behaves like an LLM in structure (rules + templates), but all routing
 
 This module does not compute priority, SLA, or generate tickets. Its sole responsibility is assigning owner teams to findings.
 
+## 1) Goal: Deterministic, Explainable Team Assignment
+
+Build a pipeline that:
+- ingests Tenable vulnerability JSON,
+- normalizes findings into a stable schema,
+- applies deterministic routing rules,
+- outputs enriched JSON with assigned ownership metadata.
+
+The output must be:
+- machine-consumable,
+- reusable across applications,
+- fully auditable,
+- configuration-driven.
+
+## 2) Confirmed Available Data (From Sample Payload)
+
+Each Tenable finding provides sufficient information for ownership routing.
+
+### Asset Context
+- `hostname`
+- `fqdn`
+- `ipv4` / `ipv6`
+- `operating_system`
+- `asset.uuid`
+
+### Vulnerability Context
+- `plugin.id`
+- `plugin.name`
+- `plugin.family`
+- `plugin.description`
+- `plugin.solution`
+- `plugin.cve`
+- `plugin.xrefs`
+
+### Lifecycle Context
+- `finding_id`
+- `state`
+- `first_found`
+- `last_found`
+- `resurfaced_date`
+
+### Evidence Context
+- plugin output
+- `port` / `protocol` / `service`
+
+No risk scoring or priority logic is required for this module.
+
+## 3) Canonical Normalized Finding Schema
+
+All routing must operate against a fixed schema to ensure consistency.
+
+### 3.1 Canonical Structure
+```json
+{
+  "finding_id": "string",
 1) Goal: Deterministic, Explainable Team Assignment
 
 Build a pipeline that:
